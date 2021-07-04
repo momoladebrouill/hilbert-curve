@@ -9,7 +9,7 @@ size=50
 margin=150
 pg.draw.line(f,0xffffff,(margin,margin),(margin,500-margin),size)
 pg.draw.line(f,0xffffff,(500-margin,margin),(500-margin,500-margin),size)
-pg.draw.line(f,0xffffff,(margin,500-margin),(500-margin,500-margin),size)
+pg.draw.line(f,0xffffff,(margin-int(size/2),500-margin),(500-margin+int(size/2),500-margin),size)
 
 pg.display.flip()
 fps.tick(1)
@@ -36,8 +36,9 @@ while B:
                 elif pos[i]==(250,0):
                     parts[i]=pg.transform.rotate(parts[i],-90)
                 f.blit(parts[i],pos[i])
-            pg.draw.line(f,0xffffff,(margin/j,250-margin/j),(margin/j,250+margin/j),round(size/(j*2)))
-            pg.draw.line(f,0xffffff,(500-margin/j,250-margin/j),(500-margin/j,250+margin/j),round(size/(j*2)))
-            pg.draw.line(f,0xffffff,(250-margin/j,250+margin/j),(250+margin/j,250+margin/j),round(size/(j*2)))
+            thickness=round(size/(j*2))
+            pg.draw.line(f,0xffffff,(margin/j,250-margin/j-thickness/2),(margin/j,250+margin/j),thickness)
+            pg.draw.line(f,0xffffff,(500-margin/j,250-margin/j-thickness/2),(500-margin/j,250+margin/j),thickness)
+            pg.draw.line(f,0xffffff,(250-margin/j-thickness/2,250+margin/j),(250+margin/j+thickness/2,250+margin/j),thickness)
             pg.display.flip()
             j*=2
